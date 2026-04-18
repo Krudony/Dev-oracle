@@ -24,9 +24,10 @@
 - ทำ /rrr ก่อนจบทุก session
 - ถ้าติดปัญหา บอกทันที ไม่รอ
 
-## Skills
+## Installed Skills
 
-[จะเพิ่มใน Step 3]
+`/recap` `/learn` `/rrr` `/forward` `/standup` `/dig` `/trace`
+`/talk-to` `/oracle-family-scan` `/who-are-you` `/about-oracle`
 
 ## Brain Structure
 
