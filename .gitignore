@@ -1,0 +1,13 @@
+# Secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Oracle vault symlinks
+ψ/learn/**/origin
