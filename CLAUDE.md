@@ -42,3 +42,16 @@
 ```
 ψ/ → inbox/ | memory/ (learnings, retrospectives, resonance) | learn/ | writing/ | lab/ | active/ | archive/ | outbox/
 ```
+
+## Oracle Fleet
+
+```
+~/.arra-oracle-v2/    ← default oracle (port 47778)
+~/.oracle/
+├── dev/oracle.db     ← dev oracle (port 47779, pm2 active)
+├── hermes/oracle.db  ← hermes oracle
+└── volt/oracle.db    ← volt oracle
+```
+
+Process manager: pm2 (`arra-oracle-http`)
+Communication: maw v1.3.0 (:3456)
