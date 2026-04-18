@@ -31,4 +31,6 @@
 
 ## Brain Structure
 
-[จะเพิ่มใน Step 4]
+```
+ψ/ → inbox/ | memory/ (learnings, retrospectives, resonance) | learn/ | writing/ | lab/ | active/ | archive/ | outbox/
+```
