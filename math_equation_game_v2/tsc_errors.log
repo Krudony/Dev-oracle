@@ -1,0 +1,68 @@
+src/components/SandboxModal.tsx(5,1): error TS6133: 'serializeToInfix' is declared but its value is never read.
+src/engine/ast.ts(1,37): error TS6196: 'BinaryOperator' is declared but never used.
+src/engine/ast.ts(1,53): error TS2305: Module '"./types.ts"' has no exported member 'ConstantNode'.
+src/engine/ast.ts(1,53): error TS6196: 'ConstantNode' is declared but never used.
+src/engine/ast.ts(1,67): error TS2305: Module '"./types.ts"' has no exported member 'FractionNode'.
+src/engine/ast.ts(1,67): error TS6196: 'FractionNode' is declared but never used.
+src/engine/ast.ts(1,81): error TS2459: Module '"./types.ts"' declares 'FractionValue' locally, but it is not exported.
+src/engine/ast.ts(1,81): error TS6196: 'FractionValue' is declared but never used.
+src/engine/ast.ts(1,96): error TS2305: Module '"./types.ts"' has no exported member 'GroupingNode'.
+src/engine/ast.ts(1,96): error TS6196: 'GroupingNode' is declared but never used.
+src/engine/ast.ts(1,110): error TS2305: Module '"./types.ts"' has no exported member 'UnaryOpNode'.
+src/engine/ast.ts(1,110): error TS6196: 'UnaryOpNode' is declared but never used.
+src/engine/ast.ts(1,123): error TS2305: Module '"./types.ts"' has no exported member 'VariableNode'.
+src/engine/ast.ts(1,123): error TS6196: 'VariableNode' is declared but never used.
+src/engine/ast.ts(1,137): error TS2305: Module '"./types.ts"' has no exported member 'BinaryOpNode'.
+src/engine/ast.ts(1,137): error TS6196: 'BinaryOpNode' is declared but never used.
+src/engine/parser.ts(1,52): error TS2305: Module '"./types.ts"' has no exported member 'BinaryOp'.
+src/engine/parser.ts(1,52): error TS6196: 'BinaryOp' is declared but never used.
+src/engine/parser.ts(1,62): error TS2459: Module '"./types.ts"' declares 'FractionValue' locally, but it is not exported.
+src/engine/parser.ts(1,62): error TS6196: 'FractionValue' is declared but never used.
+src/engine/simplifier.ts(2,68): error TS6133: 'findNodeById' is declared but its value is never read.
+src/engine/solver.ts(1,15): error TS6196: 'ASTNode' is declared but never used.
+src/state/useGameStore.ts(2,10): error TS6133: 'ASTNode' is declared but its value is never read.
+tests/unit/parser.test.ts(3,42): error TS6133: 'mathParser' is declared but its value is never read.
+tests/unit/parser.test.ts(4,10): error TS6133: 'serializeToInfix' is declared but its value is never read.
+tests/unit/parser.test.ts(4,28): error TS6133: 'serializeToLaTeX' is declared but its value is never read.
+tests/unit/parser.test.ts(4,46): error TS6133: 'serializeEquation' is declared but its value is never read.
+tests/unit/parser.test.ts(5,1): error TS6192: All imports in import declaration are unused.
+tests/unit/parser.test.ts(5,10): error TS2305: Module '"../../src/engine/ast.ts"' has no exported member 'createConstantNode'.
+tests/unit/parser.test.ts(5,30): error TS2305: Module '"../../src/engine/ast.ts"' has no exported member 'createVariableNode'.
+tests/unit/parser.test.ts(5,50): error TS2305: Module '"../../src/engine/ast.ts"' has no exported member 'createBinaryOpNode'.
+tests/unit/parser.test.ts(5,70): error TS2305: Module '"../../src/engine/ast.ts"' has no exported member 'createFractionNode'.
+tests/unit/parser.test.ts(5,90): error TS2305: Module '"../../src/engine/ast.ts"' has no exported member 'createGroupingNode'.
+tests/unit/parser.test.ts(6,1): error TS6133: 'ASTNode' is declared but its value is never read.
+tests/unit/parser.test.ts(15,26): error TS18048: 'eq.lhs.left' is possibly 'undefined'.
+tests/unit/parser.test.ts(16,26): error TS18048: 'eq.lhs.right' is possibly 'undefined'.
+tests/unit/parser.test.ts(28,26): error TS18048: 'eq.lhs.numerator' is possibly 'undefined'.
+tests/unit/parser.test.ts(29,26): error TS18048: 'eq.lhs.denominator' is possibly 'undefined'.
+tests/unit/parser.test.ts(30,11): error TS18048: 'eq.lhs.numerator' is possibly 'undefined'.
+tests/unit/parser.test.ts(31,28): error TS18048: 'eq.lhs.numerator' is possibly 'undefined'.
+tests/unit/parser.test.ts(32,28): error TS18048: 'eq.lhs.numerator' is possibly 'undefined'.
+tests/unit/parser.test.ts(32,28): error TS18048: 'eq.lhs.numerator.right' is possibly 'undefined'.
+tests/unit/parser.test.ts(45,26): error TS18048: 'squareGroup' is possibly 'undefined'.
+tests/unit/parser.test.ts(46,11): error TS18048: 'squareGroup' is possibly 'undefined'.
+tests/unit/parser.test.ts(47,28): error TS18048: 'squareGroup' is possibly 'undefined'.
+tests/unit/parser.test.ts(48,29): error TS18048: 'squareGroup' is possibly 'undefined'.
+tests/unit/parser.test.ts(49,28): error TS18048: 'innerSquare' is possibly 'undefined'.
+tests/unit/validator.test.ts(5,1): error TS6133: 'findNodeById' is declared but its value is never read.
+tests/unit/validator.test.ts(34,39): error TS18048: 'eq.lhs.numerator' is possibly 'undefined'.
+tests/unit/validator.test.ts(35,25): error TS18048: 'eq.lhs.numerator' is possibly 'undefined'.
+tests/unit/validator.test.ts(36,11): error TS18048: 'groupNode' is possibly 'undefined'.
+tests/unit/validator.test.ts(36,41): error TS18048: 'groupNode' is possibly 'undefined'.
+tests/unit/validator.test.ts(36,41): error TS18048: 'groupNode.inner' is possibly 'undefined'.
+tests/unit/validator.test.ts(37,23): error TS18048: 'groupNode' is possibly 'undefined'.
+tests/unit/validator.test.ts(37,23): error TS18048: 'groupNode.inner' is possibly 'undefined'.
+tests/unit/validator.test.ts(38,38): error TS18048: 'term7' is possibly 'undefined'.
+tests/unit/validator.test.ts(49,37): error TS18048: 'eq.lhs.right' is possibly 'undefined'.
+tests/unit/validator.test.ts(50,27): error TS18048: 'eq.lhs.right' is possibly 'undefined'.
+tests/unit/validator.test.ts(51,11): error TS18048: 'outerSquare' is possibly 'undefined'.
+tests/unit/validator.test.ts(51,44): error TS18048: 'outerSquare' is possibly 'undefined'.
+tests/unit/validator.test.ts(51,44): error TS18048: 'outerSquare.right' is possibly 'undefined'.
+tests/unit/validator.test.ts(52,26): error TS18048: 'outerSquare' is possibly 'undefined'.
+tests/unit/validator.test.ts(52,26): error TS18048: 'outerSquare.right' is possibly 'undefined'.
+tests/unit/validator.test.ts(53,13): error TS18048: 'midCurly' is possibly 'undefined'.
+tests/unit/validator.test.ts(54,40): error TS18048: 'midCurly' is possibly 'undefined'.
+tests/unit/validator.test.ts(65,37): error TS18048: 'eq.lhs.left' is possibly 'undefined'.
+tests/unit/validator.test.ts(66,23): error TS18048: 'eq.lhs.left' is possibly 'undefined'.
+tests/unit/validator.test.ts(67,36): error TS18048: 'varNode' is possibly 'undefined'.
