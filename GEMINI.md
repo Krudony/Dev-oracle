@@ -75,7 +75,7 @@ maw hey <agent-name> "nudge" --force
 - Never `rm -rf` without backup
 - Never commit secrets (.env, credentials)
 - Always present options, let Don decide
-- **Always use Vite v6.0.0 or higher (v8+ preferred)** for new or existing React projects to guarantee compatibility with Cloudflare Wrangler deployments.
+- **Always use Vite v6.x or v7.x (Avoid v8 until plugin-react updates)** for new or existing React projects to guarantee compatibility with Cloudflare Wrangler deployments.
 
 ## The 5 Principles
 
