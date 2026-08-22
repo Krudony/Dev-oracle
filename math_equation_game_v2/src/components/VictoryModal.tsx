@@ -2,6 +2,7 @@ import React from 'react';
 import { useGameStore } from '../state/useGameStore';
 import { Star, Trophy, ArrowRight, RotateCcw } from 'lucide-react';
 import { serializeToInfix } from '../engine/serializer';
+import { evaluateConstantTree } from '../engine/ast';
 
 export const VictoryModal: React.FC = () => {
   const showVictoryModal = useGameStore(state => state.showVictoryModal);
@@ -19,6 +20,37 @@ export const VictoryModal: React.FC = () => {
   else if (invalidClicksCount >= 1 || hintsUsedCount >= 1) stars = 2;
 
   const solDisplay = serializeToInfix(equation.rhs);
+  const solRational = evaluateConstantTree(equation.rhs);
+  
+  let mixedStr = null;
+  let decimalStr = null;
+  
+  if (solRational && !solRational.isInteger()) {
+    const n = Math.abs(solRational.n);
+    const d = Math.abs(solRational.d);
+    const sign = (solRational.n < 0 || solRational.d < 0) && !(solRational.n < 0 && solRational.d < 0) ? '-' : '';
+    
+    const whole = Math.floor(n / d);
+    const rem = n % d;
+    
+    if (whole > 0) {
+      mixedStr = `${sign}${whole} ${rem}/${d}`;
+    }
+    
+    let decimal = n / d;
+    if (sign === '-') decimal = -decimal;
+    
+    let strDec = decimal.toFixed(4);
+    if (strDec.endsWith('0')) strDec = parseFloat(strDec).toString();
+    
+    // Check if it's repeating, usually .3333, .6666
+    if (strDec.includes('.3333')) strDec = strDec.replace('.3333', '.333...');
+    if (strDec.includes('.6666')) strDec = strDec.replace('.6666', '.666...');
+    if (strDec.includes('.1666')) strDec = strDec.replace('.1666', '.166...');
+    if (strDec.includes('.8333')) strDec = strDec.replace('.8333', '.833...');
+    
+    decimalStr = strDec;
+  }
 
   return (
     <div
@@ -41,10 +73,26 @@ export const VictoryModal: React.FC = () => {
         </p>
 
         {/* Final Solution Badge */}
-        <div className="px-6 py-3 bg-emerald-50 border border-emerald-200 rounded-2xl mb-6">
+        <div className="w-full flex flex-col items-center px-6 py-3 bg-emerald-50 border border-emerald-200 rounded-2xl mb-6">
           <span className="font-serif italic text-2xl font-bold text-emerald-800">
             {equation.targetVariable} = {solDisplay}
           </span>
+          
+          {(mixedStr || decimalStr) && (
+            <div className="mt-2 pt-2 border-t border-emerald-200/60 w-full flex flex-col items-center gap-1">
+              <span className="text-xs text-emerald-600 font-display">หรือเท่ากับ</span>
+              {mixedStr && (
+                <span className="text-emerald-700 font-serif font-semibold text-sm">
+                  เศษส่วนคละ: {mixedStr}
+                </span>
+              )}
+              {decimalStr && (
+                <span className="text-emerald-700 font-serif font-semibold text-sm">
+                  ทศนิยม: ≈ {decimalStr}
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         
