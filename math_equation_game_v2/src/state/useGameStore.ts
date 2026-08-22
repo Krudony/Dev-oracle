@@ -415,8 +415,8 @@ export const useGameStore = create<GameState>((set, get) => ({
       }
     }
     // Otherwise load next level
-    const nextLvl = Math.min(5, currentLevel + 1);
-    get().loadLevel(nextLvl);
+    // const nextLvl = Math.min(5, currentLevel + 1);
+    get().loadLevel(currentLevel);
   }
 }));
 

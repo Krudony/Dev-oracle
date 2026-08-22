@@ -6,6 +6,7 @@ import { serializeToInfix } from '../engine/serializer';
 export const VictoryModal: React.FC = () => {
   const showVictoryModal = useGameStore(state => state.showVictoryModal);
   const equation = useGameStore(state => state.equation);
+  const history = useGameStore(state => state.history);
   const invalidClicksCount = useGameStore(state => state.invalidClicksCount);
   const hintsUsedCount = useGameStore(state => state.hintsUsedCount);
   const nextPuzzle = useGameStore(state => state.nextPuzzle);
@@ -44,6 +45,20 @@ export const VictoryModal: React.FC = () => {
           <span className="font-serif italic text-2xl font-bold text-emerald-800">
             {equation.targetVariable} = {solDisplay}
           </span>
+        </div>
+
+        
+        {/* Solution Recap */}
+        <div className="w-full mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-200 max-h-48 overflow-y-auto">
+          <h3 className="text-sm font-bold font-display text-slate-700 mb-2">ทบทวนขั้นตอน (Solution Recap)</h3>
+          <div className="flex flex-col gap-2 text-left">
+            {history.map((eq, i) => (
+              <div key={i} className="flex items-center gap-2 text-sm text-slate-600 font-serif border-b border-slate-100 pb-1 last:border-0">
+                <span className="w-6 text-xs text-slate-400 font-display">#{i}</span>
+                <span>{serializeToInfix(eq.lhs)} = {serializeToInfix(eq.rhs)}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Stars Display */}
@@ -87,7 +102,7 @@ export const VictoryModal: React.FC = () => {
             onClick={nextPuzzle}
             className="flex items-center justify-center gap-2 flex-1 px-4 py-3 rounded-2xl bg-sky-500 hover:bg-sky-600 active:scale-95 text-white font-display font-bold shadow-md hover:shadow-lg transition-all"
           >
-            <span>ด่านต่อไป</span>
+            <span>โจทย์ต่อไป</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
