@@ -21,7 +21,7 @@ describe('Unpack & Transformation Engine', () => {
     const res = applyMove(eq, peelable[0].nodeId, '+'); // wrong! opposite of +5 is -5
 
     expect(res.success).toBe(false);
-    expect(res.message).toContain('Incorrect inverse operation');
+    expect(res.message).toContain('เลือกเครื่องหมายผิดจ้า');
   });
 
   it('unpacks denominator and creates multiplication on RHS', () => {

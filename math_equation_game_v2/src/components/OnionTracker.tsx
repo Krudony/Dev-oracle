@@ -15,19 +15,19 @@ export const OnionTracker: React.FC = () => {
     <div className="flex items-center justify-center gap-2 sm:gap-4 px-4 py-2 bg-slate-50/80 rounded-2xl border border-slate-200/50 max-w-2xl w-full my-2 text-xs sm:text-sm font-display text-slate-600">
       <div className="flex items-center gap-1 text-sky-700 font-semibold">
         <Layers className="w-4 h-4 text-sky-600" />
-        <span>Onion Layers:</span>
+        <span>ชั้นของหัวหอม:</span>
       </div>
 
       <div className="flex items-center gap-1.5">
         {equation.isSolved ? (
           <span className="flex items-center gap-1 text-emerald-600 font-bold">
             <CheckCircle className="w-4 h-4 fill-emerald-100 text-emerald-600" />
-            <span>Fully Unpacked!</span>
+            <span>ปอกหมดแล้วจ้า!</span>
           </span>
         ) : (
           <>
             <span className="px-2 py-0.5 bg-sky-100 text-sky-800 rounded-full font-bold text-xs">
-              {currentDepth > 0 ? `${currentDepth} Layer(s) Deep` : 'Innermost Layer'}
+              {currentDepth > 0 ? `${currentDepth} ชั้น` : 'ชั้นในสุดแล้ว'}
             </span>
             <span className="text-slate-300">➔</span>
             <span className="flex items-center gap-1 text-slate-700 font-bold">

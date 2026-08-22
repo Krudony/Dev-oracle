@@ -37,10 +37,10 @@ export const HeaderControls: React.FC = () => {
         </div>
         <div>
           <h1 className="font-display font-bold text-lg text-slate-800 leading-tight">
-            Algebra Unpacker
+            Galaxy Math Quest
           </h1>
           <span className="text-[11px] font-body text-slate-400 font-medium block">
-            Reverse PEMDAS Mastery (v2)
+            ปอกหัวหอมแก้สมการ (v2)
           </span>
         </div>
       </div>
@@ -52,14 +52,14 @@ export const HeaderControls: React.FC = () => {
             className="flex items-center gap-1.5 px-3 py-1 bg-slate-100/90 rounded-full font-display text-xs font-semibold text-slate-700"
             data-testid="step-counter"
           >
-            <span>Steps:</span>
+            <span>จำนวนก้าว:</span>
             <strong className="text-sky-600 font-bold">{equation.stepCount}</strong>
           </div>
         )}
 
         <div className="flex items-center gap-1 px-3 py-1 bg-amber-50 rounded-full font-display text-xs font-bold text-amber-700 border border-amber-200/60">
           <Trophy className="w-3.5 h-3.5 text-amber-500" />
-          <span>{score} pts</span>
+          <span>{score} แต้ม</span>
         </div>
       </div>
 
@@ -72,7 +72,7 @@ export const HeaderControls: React.FC = () => {
           onClick={undo}
           disabled={!canUndo}
           className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent rounded-xl transition-all"
-          title="Undo step"
+          title="ย้อนกลับ"
           aria-label="Undo"
         >
           <Undo2 className="w-4 h-4" />
@@ -85,7 +85,7 @@ export const HeaderControls: React.FC = () => {
           onClick={redo}
           disabled={!canRedo}
           className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent rounded-xl transition-all"
-          title="Redo step"
+          title="ทำซ้ำ"
           aria-label="Redo"
         >
           <Redo2 className="w-4 h-4" />
@@ -97,7 +97,7 @@ export const HeaderControls: React.FC = () => {
           data-testid="reset-button"
           onClick={resetCurrentEquation}
           className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all"
-          title="Reset puzzle to start"
+          title="เริ่มใหม่"
           aria-label="Reset"
         >
           <RotateCcw className="w-4 h-4" />
@@ -109,10 +109,10 @@ export const HeaderControls: React.FC = () => {
           data-testid="hint-button"
           onClick={requestHint}
           className="flex items-center gap-1 px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200/80 rounded-xl font-display font-semibold text-xs transition-all active:scale-95"
-          title="Get a hint"
+          title="ขอคำใบ้"
         >
           <Lightbulb className="w-3.5 h-3.5 text-amber-600" />
-          <span>Hint</span>
+          <span>ขอคำใบ้</span>
         </button>
 
         {/* Custom Sandbox */}
@@ -121,10 +121,10 @@ export const HeaderControls: React.FC = () => {
           data-testid="sandbox-button"
           onClick={() => setShowSandboxModal(true)}
           className="flex items-center gap-1 px-3 py-1.5 bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200/80 rounded-xl font-display font-semibold text-xs transition-all active:scale-95"
-          title="Open custom sandbox editor"
+          title="เปิดโหมดสร้างโจทย์เอง"
         >
           <Sparkles className="w-3.5 h-3.5 text-purple-600" />
-          <span>Sandbox</span>
+          <span>สร้างโจทย์เอง</span>
         </button>
 
         {/* Sound Toggle */}
@@ -132,7 +132,7 @@ export const HeaderControls: React.FC = () => {
           type="button"
           onClick={toggleSound}
           className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all"
-          title={isMuted ? 'Unmute audio' : 'Mute audio'}
+          title={isMuted ? 'เปิดเสียง' : 'ปิดเสียง'}
           aria-label={isMuted ? 'Unmute' : 'Mute'}
         >
           {isMuted ? <VolumeX className="w-4 h-4 text-rose-500" /> : <Volume2 className="w-4 h-4 text-emerald-600" />}

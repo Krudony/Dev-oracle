@@ -134,7 +134,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         activeSelectedNodeId: null,
         activePeelableInfo: null,
         shakeNodeId: null,
-        feedback: { type: 'info', message: `Solve for ${generated.targetVariable}!` },
+        feedback: { type: 'info', message: `เป้าหมาย: ทำให้ ${generated.targetVariable} อยู่ตัวเดียวให้ได้!` },
         invalidClicksCount: 0,
         hintsUsedCount: 0,
         showVictoryModal: false
@@ -156,7 +156,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       activeSelectedNodeId: null,
       activePeelableInfo: null,
       shakeNodeId: null,
-      feedback: { type: 'info', message: `Solve for ${generated.targetVariable}!` },
+      feedback: { type: 'info', message: `เป้าหมาย: ทำให้ ${generated.targetVariable} อยู่ตัวเดียวให้ได้!` },
       invalidClicksCount: 0,
       hintsUsedCount: 0,
       showVictoryModal: false
@@ -177,7 +177,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         activeSelectedNodeId: null,
         activePeelableInfo: null,
         shakeNodeId: null,
-        feedback: { type: 'info', message: `Custom puzzle loaded! Isolate '${parsed.targetVariable}'.` },
+        feedback: { type: 'info', message: `โหลดโจทย์สำเร็จ! เป้าหมายคือหา '${parsed.targetVariable}'` },
         invalidClicksCount: 0,
         hintsUsedCount: 0,
         showVictoryModal: false,
@@ -307,7 +307,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         activeSelectedNodeId: null,
         activePeelableInfo: null,
         showVictoryModal: false,
-        feedback: { type: 'info', message: 'Step undone.' }
+        feedback: { type: 'info', message: 'ย้อนกลับก้าวเมื่อกี้แล้วจ้า' }
       });
       soundFx.playSelect();
     }
@@ -323,7 +323,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         activeSelectedNodeId: null,
         activePeelableInfo: null,
         showVictoryModal: nextEq.isSolved,
-        feedback: { type: 'info', message: 'Step redone.' }
+        feedback: { type: 'info', message: 'ทำซ้ำก้าวตะกี้แล้วจ้า' }
       });
       soundFx.playSelect();
     }
@@ -341,7 +341,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         showVictoryModal: false,
         invalidClicksCount: 0,
         hintsUsedCount: 0,
-        feedback: { type: 'info', message: 'Equation reset to starting state.' }
+        feedback: { type: 'info', message: 'รีเซ็ตกลับไปจุดเริ่มต้นแล้ว!' }
       });
       soundFx.playSelect();
     }
@@ -359,7 +359,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       if (preset && preset.hints.length > 0) {
         const hintIdx = Math.min(get().hintsUsedCount - 1, preset.hints.length - 1);
         set({
-          feedback: { type: 'hint', message: `💡 Hint: ${preset.hints[hintIdx]}` }
+          feedback: { type: 'hint', message: `💡 คำใบ้: ${preset.hints[hintIdx]}` }
         });
         soundFx.playSelect();
         return;

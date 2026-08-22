@@ -52,7 +52,7 @@ export const GameView: React.FC = () => {
             >
               <div className="flex items-center gap-1.5">
                 <History className="w-4 h-4 text-sky-600" />
-                <span>Move History ({stepDescriptions.length} actions)</span>
+                <span>ประวัติการเคลื่อนย้าย ({stepDescriptions.length} ครั้ง)</span>
               </div>
               {showHistory ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
             </button>

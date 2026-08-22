@@ -36,7 +36,7 @@ describe('Tier 1: Feature 2 - Reverse PEMDAS Validation & Diagnostics Engine', (
         const res = validateMove(eq, term7!.id);
         assert.strictEqual(res.isValid, false);
         assert.strictEqual(res.errorCode, 'TRAPPED_IN_NUMERATOR');
-        assert.ok(res.errorMessage?.includes('trapped in the numerator'));
+        assert.ok(res.errorMessage?.includes('ติดอยู่ชั้นบนของเศษส่วน'));
       }
     }
   });

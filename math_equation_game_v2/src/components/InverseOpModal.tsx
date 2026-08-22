@@ -21,25 +21,25 @@ export const InverseOpModal: React.FC = () => {
   }> = [
     {
       op: '+',
-      label: 'Plus (+)',
+      label: 'บวก (+)',
       icon: <Plus className="w-6 h-6" />,
       color: 'hover:bg-blue-500 hover:text-white border-blue-200 text-blue-700 bg-blue-50'
     },
     {
       op: '-',
-      label: 'Minus (-)',
+      label: 'ลบ (-)',
       icon: <Minus className="w-6 h-6" />,
       color: 'hover:bg-rose-500 hover:text-white border-rose-200 text-rose-700 bg-rose-50'
     },
     {
       op: '*',
-      label: 'Times (×)',
+      label: 'คูณ (×)',
       icon: <TimesIcon className="w-6 h-6" />,
       color: 'hover:bg-emerald-500 hover:text-white border-emerald-200 text-emerald-700 bg-emerald-50'
     },
     {
       op: '/',
-      label: 'Divide (÷)',
+      label: 'หาร (÷)',
       icon: <Divide className="w-6 h-6" />,
       color: 'hover:bg-purple-500 hover:text-white border-purple-200 text-purple-700 bg-purple-50'
     }
@@ -68,10 +68,10 @@ export const InverseOpModal: React.FC = () => {
         </div>
 
         <h3 className="font-display font-bold text-2xl text-slate-800 mb-1">
-          Unpacking: <span className="text-sky-600 underline decoration-sky-300">{activePeelableInfo.displayLabel}</span>
+          กำลังปอก: <span className="text-sky-600 underline decoration-sky-300">{activePeelableInfo.displayLabel}</span>
         </h3>
         <p className="text-slate-500 font-body text-sm mb-6">
-          What is the <strong>opposite (inverse) operation</strong> to move this across the equals sign?
+          เครื่องหมาย <strong>ตรงข้าม</strong> ที่ต้องใช้เวลาย้ายข้ามฝั่ง คืออะไรเอ่ย?
         </p>
 
         {/* 4 Operation Choice Buttons */}

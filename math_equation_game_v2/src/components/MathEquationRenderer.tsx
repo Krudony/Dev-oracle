@@ -12,7 +12,7 @@ export const MathEquationRenderer: React.FC = () => {
   if (!equation) {
     return (
       <div className="flex items-center justify-center p-12 text-slate-400 font-display text-xl">
-        No equation loaded. Pick a puzzle to start!
+        ยังไม่ได้เลือกโจทย์ครับ! จิ้มเลือกด่านด้านบนเลยลุย!
       </div>
     );
   }
@@ -61,7 +61,7 @@ export const MathEquationRenderer: React.FC = () => {
             >
               <Sparkles className="w-4 h-4 text-amber-200 animate-spin" />
               <span>
-                Simplify: <strong className="font-bold">{opp.originalText}</strong> ➔{' '}
+                ทำให้น้อยลง: <strong className="font-bold">{opp.originalText}</strong> ➔{' '}
                 <strong className="font-bold">{opp.simplifiedText}</strong>
               </span>
             </button>

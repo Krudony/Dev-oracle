@@ -32,10 +32,10 @@ export const VictoryModal: React.FC = () => {
         </div>
 
         <h2 className="font-display font-bold text-2xl sm:text-3xl text-slate-800 mb-1">
-          Puzzle Solved! 🎉
+          แก้โจทย์สำเร็จ! 🎉
         </h2>
         <p className="text-slate-500 font-body text-sm mb-4">
-          You successfully peeled every layer to isolate{' '}
+          หนูปอกหัวหอมทุกชั้นจนแยก{' '}
           <strong className="text-sky-600 font-serif italic text-lg">{equation.targetVariable}</strong>!
         </p>
 
@@ -61,13 +61,13 @@ export const VictoryModal: React.FC = () => {
         {/* Stats Summary */}
         <div className="grid grid-cols-2 gap-3 w-full mb-6 p-3 bg-slate-50 rounded-2xl text-xs font-display text-slate-600">
           <div>
-            <span className="block text-slate-400">Steps Taken</span>
+            <span className="block text-slate-400">จำนวนก้าวที่ใช้</span>
             <span className="text-base font-bold text-slate-800">{equation.stepCount}</span>
           </div>
           <div>
-            <span className="block text-slate-400">Rating</span>
+            <span className="block text-slate-400">ระดับฝีมือ</span>
             <span className="text-base font-bold text-amber-600">
-              {stars === 3 ? 'Master Peeler!' : stars === 2 ? 'Great Job!' : 'Solved!'}
+              {stars === 3 ? 'เซียนปอกหัวหอม!' : stars === 2 ? 'เก่งมาก!' : 'ผ่านแล้ว!'}
             </span>
           </div>
         </div>
@@ -80,14 +80,14 @@ export const VictoryModal: React.FC = () => {
             className="flex items-center justify-center gap-1.5 flex-1 px-4 py-3 rounded-2xl border border-slate-200 font-display font-semibold text-slate-700 hover:bg-slate-50 active:scale-95 transition-all"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>Replay</span>
+            <span>เล่นอีกรอบ</span>
           </button>
           <button
             type="button"
             onClick={nextPuzzle}
             className="flex items-center justify-center gap-2 flex-1 px-4 py-3 rounded-2xl bg-sky-500 hover:bg-sky-600 active:scale-95 text-white font-display font-bold shadow-md hover:shadow-lg transition-all"
           >
-            <span>Next</span>
+            <span>ด่านต่อไป</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

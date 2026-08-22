@@ -65,7 +65,7 @@ export const LevelSelector: React.FC = () => {
                   : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
-              <span>Puzzle {idx + 1}</span>
+              <span>ด่าน {idx + 1}</span>
               {starCount > 0 && (
                 <span className="flex items-center text-amber-500">
                   <Star className="w-3 h-3 fill-amber-400" />
@@ -76,7 +76,7 @@ export const LevelSelector: React.FC = () => {
             </button>
           );
         })}
-        {/* Generate Random Puzzle Button */}
+        {/* Generate Random ด่าน Button */}
         <button
           type="button"
           onClick={() => useGameStore.getState().generateRandomPuzzle(currentLevel)}
@@ -87,7 +87,7 @@ export const LevelSelector: React.FC = () => {
           }`}
         >
           <Sparkles className="w-3 h-3" />
-          <span>Random</span>
+          <span>สุ่มโจทย์ใหม่</span>
         </button>
       </div>
     </div>

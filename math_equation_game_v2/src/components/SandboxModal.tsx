@@ -90,10 +90,10 @@ export const SandboxModal: React.FC = () => {
           </div>
           <div>
             <h3 className="font-display font-bold text-xl text-slate-800">
-              Custom Equation Sandbox
+              โหมดสร้างโจทย์เอง
             </h3>
             <p className="text-xs text-slate-500 font-body">
-              Type any equation with nested brackets (), {}, [], and fractions!
+              พิมพ์สมการที่มีวงเล็บ (), {}, [] และเศษส่วนได้เลยจ้า!
             </p>
           </div>
         </div>
@@ -101,7 +101,7 @@ export const SandboxModal: React.FC = () => {
         <form onSubmit={handlePlay} className="flex flex-col gap-4 my-4">
           <div>
             <label htmlFor="custom-eq-input" className="block text-xs font-bold text-slate-700 mb-1.5 font-display">
-              Equation Input:
+              พิมพ์สมการตรงนี้:
             </label>
             <input
               id="custom-eq-input"
@@ -131,13 +131,13 @@ export const SandboxModal: React.FC = () => {
               <div>
                 {validationStatus.valid ? (
                   <div>
-                    <strong>Valid & 100% Solvable!</strong> Isolates variable{' '}
-                    <code className="font-serif italic font-bold">{validationStatus.targetVar}</code> ➔ Solution:{' '}
-                    <strong>{validationStatus.solution}</strong> ({validationStatus.stepsCount} steps)
+                    <strong>สมการถูกต้องและแก้ได้ 100%!</strong> เป้าหมายคือหา{' '}
+                    <code className="font-serif italic font-bold">{validationStatus.targetVar}</code> ➔ คำตอบคือ:{' '}
+                    <strong>{validationStatus.solution}</strong> ({validationStatus.stepsCount} ก้าว)
                   </div>
                 ) : (
                   <div>
-                    <strong>Syntax or Solvability Issue:</strong> {validationStatus.errorMsg}
+                    <strong>มีข้อผิดพลาด:</strong> {validationStatus.errorMsg}
                   </div>
                 )}
               </div>
@@ -147,7 +147,7 @@ export const SandboxModal: React.FC = () => {
           {/* Quick Example Presets */}
           <div>
             <span className="block text-xs font-semibold text-slate-500 mb-2 font-display">
-              Try a Quick Preset:
+              หรือลองเลือกจากตัวอย่าง:
             </span>
             <div className="flex flex-wrap gap-2">
               {quickExamples.map(ex => (
@@ -170,7 +170,7 @@ export const SandboxModal: React.FC = () => {
             className="flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 disabled:opacity-50 text-white font-display font-bold text-base rounded-2xl shadow-md transition-all active:scale-98 mt-2"
           >
             <Play className="w-5 h-5 fill-white" />
-            <span>Play in Sandbox</span>
+            <span>เริ่มเล่นโจทย์นี้เลย!</span>
           </button>
         </form>
       </div>

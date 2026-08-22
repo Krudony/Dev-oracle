@@ -142,7 +142,7 @@ export function diagnoseInvalidMove(
     return {
       isValid: false,
       errorCode: 'WRONG_SIDE',
-      errorMessage: 'Selected term is not on the left side of the equation.'
+      errorMessage: 'ตัวเลขนี้ไม่ได้อยู่ฝั่งเดียวกับตัวแปรนะ!'
     };
   }
 
@@ -151,7 +151,7 @@ export function diagnoseInvalidMove(
     return {
       isValid: false,
       errorCode: 'VARIABLE_NODE_SELECTED',
-      errorMessage: `You clicked '${selectedNode.name || targetVariable}'! Your goal is to isolate '${selectedNode.name || targetVariable}', so peel the other numbers away from it.`
+      errorMessage: `หนูกดโดนตัวแปรนี้นะ! เป้าหมายของเราคือทำให้มันอยู่ตัวเดียว ดังนั้นต้องย้ายตัวเลขอื่นออกไปจ้า`
     };
   }
 
@@ -161,7 +161,7 @@ export function diagnoseInvalidMove(
     return {
       isValid: false,
       errorCode: 'NOT_PEELABLE',
-      errorMessage: 'This term cannot be moved right now.'
+      errorMessage: 'ตัวเลขนี้ยังย้ายไม่ได้ตอนนี้จ้า!'
     };
   }
 
@@ -173,16 +173,16 @@ export function diagnoseInvalidMove(
     if (ancestor.type === 'group') {
       const bracketName =
         ancestor.bracketType === 'square'
-          ? 'square [ ]'
+          ? 'ก้ามปู [ ]'
           : ancestor.bracketType === 'curly'
-          ? 'curly { }'
-          : 'round ( )';
+          ? 'ปีกกา { }'
+          : 'วงเล็บโค้ง ( )';
       return {
         isValid: false,
         errorCode: 'TRAPPED_IN_BRACKET',
         blockingAncestorId: ancestor.id,
-        blockingDescription: `Trapped inside ${bracketName} brackets`,
-        errorMessage: `This term is trapped inside the ${bracketName} brackets! Clear the outer numbers first before unpacking inside.`
+        blockingDescription: `โดนขังอยู่ใน${bracketName}`,
+        errorMessage: `ตัวเลขนี้โดนขังอยู่ใน${bracketName}! ต้องเคลียร์ตัวเลขรอบนอกสุดก่อน ถึงจะเข้าไปข้างในได้นะ`
       };
     }
 
@@ -194,8 +194,8 @@ export function diagnoseInvalidMove(
           isValid: false,
           errorCode: 'TRAPPED_IN_NUMERATOR',
           blockingAncestorId: ancestor.denominator.id,
-          blockingDescription: `Fraction denominator: ${denText}`,
-          errorMessage: `This term is trapped in the numerator! You must clear the bottom denominator (${denText}) first.`
+          blockingDescription: `ติดตัวส่วน: ${denText}`,
+          errorMessage: `ตัวเลขนี้ติดอยู่ชั้นบนของเศษส่วน! ต้องย้ายตัวส่วน (${denText}) ที่อยู่ข้างล่างไปก่อนนะ`
         };
       }
     }
@@ -209,8 +209,8 @@ export function diagnoseInvalidMove(
           isValid: false,
           errorCode: 'TRAPPED_IN_FACTOR',
           blockingAncestorId: coeff.id,
-          blockingDescription: `Outer multiplier: ${coeffText}`,
-          errorMessage: `Clear the outer multiplier (${coeffText}) in front of the expression first!`
+          blockingDescription: `ติดตัวคูณข้างนอก: ${coeffText}`,
+          errorMessage: `ต้องเคลียร์ตัวคูณ (${coeffText}) ที่อยู่ข้างนอกสุดก่อนจ้า!`
         };
       }
     }
@@ -224,8 +224,8 @@ export function diagnoseInvalidMove(
           isValid: false,
           errorCode: 'NOT_PEELABLE',
           blockingAncestorId: outerTerm.id,
-          blockingDescription: `Outer addition/subtraction: ${termText}`,
-          errorMessage: `You must peel away the outer addition/subtraction (${termText}) before opening this layer!`
+          blockingDescription: `ติดบวกลบข้างนอก: ${termText}`,
+          errorMessage: `ต้องปอกตัวที่บวกลบกันอยู่ข้างนอก (${termText}) ออกไปก่อนนะ!`
         };
       }
     }
@@ -234,7 +234,7 @@ export function diagnoseInvalidMove(
   return {
     isValid: false,
     errorCode: 'NOT_PEELABLE',
-    errorMessage: 'This term is locked! Follow Reverse PEMDAS to peel outer terms first.'
+    errorMessage: 'ตัวนี้ยังโดนล็อคอยู่! ต้องปอกหัวหอมจากข้างนอกสุดเข้าไปข้างในนะจ๊ะ'
   };
 }
 

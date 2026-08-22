@@ -117,28 +117,28 @@ export function applyMove(
       return {
         success: false,
         newEquation: equation,
-        message: errorDiag.errorMessage || 'Invalid move! This term cannot be peeled yet.'
+        message: errorDiag.errorMessage || 'ย้ายไม่ได้จ้า! ตัวเลขนี้ยังปอกออกไม่ได้นะ'
       };
     }
     const errorDiagRhs = diagnoseInvalidMove(equation.rhs, selectedNodeId, equation.targetVariable);
     return {
       success: false,
       newEquation: equation,
-      message: errorDiagRhs.errorMessage || 'Invalid move! This term cannot be peeled yet.'
+      message: errorDiagRhs.errorMessage || 'ย้ายไม่ได้จ้า! ตัวเลขนี้ยังปอกออกไม่ได้นะ'
     };
   }
 
   if (userSelectedInverseOp !== targetPeel.requiredInverseOp) {
     const opNames: Record<BinaryOperator, string> = {
-      '+': 'addition (+)',
-      '-': 'subtraction (-)',
-      '*': 'multiplication (×)',
-      '/': 'division (÷)'
+      '+': 'การบวก (+)',
+      '-': 'การลบ (-)',
+      '*': 'การคูณ (×)',
+      '/': 'การหาร (÷)'
     };
     return {
       success: false,
       newEquation: equation,
-      message: `Incorrect inverse operation! The opposite operation is ${opNames[targetPeel.requiredInverseOp]}.`
+      message: `เลือกเครื่องหมายผิดจ้า! เครื่องหมายที่ตรงข้ามคือ ${opNames[targetPeel.requiredInverseOp]} นะ`
     };
   }
 
@@ -179,7 +179,7 @@ export function applyMove(
     success: true,
     newEquation,
     message: isSolved
-      ? `🎉 Amazing! You successfully isolated '${equation.targetVariable}'!`
-      : `Awesome! Moved ${termText} using opposite operation '${opSymbol}'.`
+      ? `🎉 เยี่ยมมาก! เธอแยก '${equation.targetVariable}'!`
+      : `เก่งมาก! ย้าย ${termText} ไปอีกฝั่งด้วยเครื่องหมาย '${opSymbol}' (หลักการตราชั่ง: ทำอะไรฝั่งนึง ต้องทำเหมือนกันอีกฝั่ง!)`
   };
 }
