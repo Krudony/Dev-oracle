@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รู้ทันหนังสือราชการ — สรุปให้อ่านง่าย รู้ว่าต้องทำอะไรต่อ</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <a class="brand" href="/" aria-label="กลับหน้าเริ่มต้น">
+        <span class="brand-mark" aria-hidden="true">ร</span>
+        <span><strong>รู้ทันหนังสือราชการ</strong><small>ผู้ช่วยอ่านเอกสารสำหรับประชาชน</small></span>
+      </a>
+      <div class="status-pill" id="bridgePill" aria-live="polite">
+        <span class="status-dot loading" id="bridgeDot"></span>
+        <span id="bridgeText">กำลังตรวจระบบ...</span>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="intro" aria-labelledby="pageTitle">
+        <span class="eyebrow">อ่านง่าย • เห็นกำหนดเวลา • รู้ขั้นตอนต่อไป</span>
+        <h1 id="pageTitle">ได้รับหนังสือราชการ<br>แล้วไม่แน่ใจว่าต้องทำอะไร?</h1>
+        <p>ส่งเอกสารมา แล้วระบบจะสรุปเป็นภาษาง่าย พร้อมรายการที่ต้องทำและจุดที่ควรระวัง</p>
+      </section>
+
+      <section class="card composer-card" aria-labelledby="startTitle">
+        <div class="section-heading">
+          <span class="step-chip">1</span>
+          <div><h2 id="startTitle">ส่งเอกสารให้ช่วยอ่าน</h2><p>แนบไฟล์ หรือวางข้อความจากหนังสือด้านล่าง</p></div>
+        </div>
+
+        <div class="upload-dropzone" id="dropzone" tabindex="0" role="button" aria-label="คลิกหรือกด Enter เพื่อเลือกไฟล์ หรือลากไฟล์มาวาง">
+          <input type="file" id="fileInput" accept=".pdf,image/jpeg,image/png" hidden>
+          <div class="dropzone-content" id="dropzoneContent">
+            <span class="upload-icon" aria-hidden="true">＋</span>
+            <div><strong>แนบ PDF หรือรูปถ่ายเอกสาร</strong><span class="file-hint">คลิกเพื่อเลือก หรือลากไฟล์มาวาง • ไม่เกิน 5 MB</span></div>
+          </div>
+          <div class="file-pill" id="filePill" style="display:none;">
+            <span aria-hidden="true">📄</span><strong id="fileName">เอกสาร.pdf</strong><span class="file-size" id="fileSize"></span>
+            <button type="button" class="remove-file-btn" id="removeFileBtn" aria-label="ลบไฟล์">ลบ</button>
+          </div>
+        </div>
+
+        <div class="choice-divider"><span>หรือวางข้อความ</span></div>
+
+        <div class="form-group">
+          <label for="documentInput">ข้อความในหนังสือ</label>
+          <textarea id="documentInput" rows="5" placeholder="คัดลอกข้อความจากหนังสือมาวางตรงนี้"></textarea>
+          <button type="button" class="btn-link" id="loadSampleBtn">ลองตัวอย่างหนังสือภาษีที่ดิน</button>
+        </div>
+
+        <div class="form-group optional-question">
+          <label for="goalInput">อยากรู้เรื่องไหนเป็นพิเศษ? <span>(ไม่จำเป็น)</span></label>
+          <input id="goalInput" type="text" placeholder="เช่น ต้องทำภายในวันไหน หรือยื่นคัดค้านอย่างไร">
+        </div>
+
+        <div class="privacy-note">
+          <span aria-hidden="true">🔒</span>
+          <p><strong>ก่อนส่ง:</strong> ปิดบังข้อมูลส่วนบุคคล เช่น เลขบัตรประจำตัวประชาชน 13 หลัก ลายมือชื่อ เลขบัญชี และข้อมูลสุขภาพ ระบบไม่รับเอกสารลับ</p>
+        </div>
+
+        <div class="model-picker">
+          <label for="modelSelect"><strong>เลือกโมเดล AI</strong><span>โมเดลนี้จะใช้วิเคราะห์ทุกขั้นตอน</span></label>
+          <select id="modelSelect" disabled><option value="gemini-3.1-flash-lite">กำลังโหลดโมเดลจาก AiPASS...</option></select>
+          <div class="credit-badge" id="creditBadge" aria-live="polite"><span id="creditText">กำลังโหลดข้อมูล...</span></div>
+        </div>
+
+        <label class="checkbox-label consent-row">
+          <input type="checkbox" id="consentCheckbox">
+          <span>ฉันตรวจและปิดบังข้อมูลสำคัญแล้ว</span>
+        </label>
+
+        <button id="runBtn" class="btn btn-primary btn-run" disabled><span class="btn-icon" aria-hidden="true">⏳</span>กำลังตรวจการเชื่อมต่อ</button>
+        <input type="checkbox" id="demoToggle" hidden tabindex="-1" aria-hidden="true">
+      </section>
+
+      <section class="results" id="resultsSection" aria-labelledby="resultsTitle">
+        <div class="section-heading results-heading">
+          <span class="step-chip">2</span>
+          <div><h2 id="resultsTitle">คำตอบของคุณ</h2><p>อ่าน “สิ่งที่ต้องทำ” และ “กำหนดเวลา” ก่อน</p></div>
+        </div>
+
+        <div id="demoResultNotice" hidden></div>
+
+        <div class="pipeline-tracker" id="pipelineTracker" aria-live="polite" aria-label="ความคืบหน้าการวิเคราะห์">
+          <div class="step-badge" id="stepBadge-interpreter"><span class="step-num">1</span><span class="step-info"><strong>อ่านเอกสาร</strong><small id="tag-interpreter">รอ</small></span></div><span class="step-arrow">›</span>
+          <div class="step-badge" id="stepBadge-risk_checker"><span class="step-num">2</span><span class="step-info"><strong>หาจุดสำคัญ</strong><small id="tag-risk_checker">รอ</small></span></div><span class="step-arrow">›</span>
+          <div class="step-badge" id="stepBadge-action_planner"><span class="step-num">3</span><span class="step-info"><strong>จัดสิ่งที่ต้องทำ</strong><small id="tag-action_planner">รอ</small></span></div><span class="step-arrow">›</span>
+          <div class="step-badge" id="stepBadge-final_synthesizer"><span class="step-num">4</span><span class="step-info"><strong>สรุปคำตอบ</strong><small id="tag-final_synthesizer">รอ</small></span></div>
+        </div>
+
+        <article class="card role-card highlight-card" id="card-final_synthesizer">
+          <div class="role-header">
+            <div class="role-title"><span class="role-icon">✓</span><div><h3>สรุปสิ่งที่คุณควรรู้และต้องทำ</h3><span class="role-state-text" id="stateText-final_synthesizer">กำลังรอเริ่มวิเคราะห์</span></div></div>
+            <div class="role-actions"><button class="btn btn-sm retry-btn" id="retry-final_synthesizer" style="display:none;">ลองใหม่</button><button class="btn btn-sm copy-btn" data-target="content-final_synthesizer">คัดลอก</button></div>
+          </div>
+          <div class="stream-container final-output" id="content-final_synthesizer"><div class="placeholder-text">คำตอบฉบับอ่านง่ายจะแสดงตรงนี้</div></div>
+        </article>
+
+        <section class="card export-panel" id="exportPanel" style="display:none;">
+          <div><h3>เก็บคำตอบไว้ใช้ต่อ</h3><p>ดาวน์โหลด พิมพ์ หรือคัดลอกเพื่อพกไปติดต่อหน่วยงาน</p></div>
+          <div class="export-buttons"><button id="exportMdBtn" class="btn btn-primary">ดาวน์โหลดรายงาน</button><button id="printBtn" class="btn btn-secondary">พิมพ์</button><button id="copyAllBtn" class="btn btn-secondary">คัดลอกทั้งหมด</button><button id="exportJsonBtn" class="btn btn-quiet">ข้อมูล JSON</button></div>
+        </section>
+
+        <details class="work-details">
+          <summary>ดูรายละเอียดการวิเคราะห์แต่ละขั้น</summary>
+          <div class="role-cards-grid">
+            <article class="card role-card" id="card-interpreter"><div class="role-header"><div class="role-title"><span class="role-icon">1</span><div><h3>อ่านและถอดความ</h3><span class="role-state-text" id="stateText-interpreter">รอคิว</span></div></div><div class="role-actions"><button class="btn btn-sm retry-btn" id="retry-interpreter" style="display:none;">ลองใหม่</button><button class="btn btn-sm copy-btn" data-target="content-interpreter">คัดลอก</button></div></div><div class="stream-container" id="content-interpreter"><div class="placeholder-text">รอดำเนินการ</div></div></article>
+            <article class="card role-card" id="card-risk_checker"><div class="role-header"><div class="role-title"><span class="role-icon">2</span><div><h3>ตรวจความเสี่ยงและกำหนดเวลา</h3><span class="role-state-text" id="stateText-risk_checker">รอคิว</span></div></div><div class="role-actions"><button class="btn btn-sm retry-btn" id="retry-risk_checker" style="display:none;">ลองใหม่</button><button class="btn btn-sm copy-btn" data-target="content-risk_checker">คัดลอก</button></div></div><div class="stream-container" id="content-risk_checker"><div class="placeholder-text">รอดำเนินการ</div></div></article>
+            <article class="card role-card" id="card-action_planner"><div class="role-header"><div class="role-title"><span class="role-icon">3</span><div><h3>จัดรายการที่ต้องทำ</h3><span class="role-state-text" id="stateText-action_planner">รอคิว</span></div></div><div class="role-actions"><button class="btn btn-sm retry-btn" id="retry-action_planner" style="display:none;">ลองใหม่</button><button class="btn btn-sm copy-btn" data-target="content-action_planner">คัดลอก</button></div></div><div class="stream-container" id="content-action_planner"><div class="placeholder-text">รอดำเนินการ</div></div></article>
+          </div>
+        </details>
+
+        <button id="resetBtn" class="btn btn-reset">เริ่มอ่านเอกสารฉบับใหม่</button>
+      </section>
+    </main>
+
+    <footer class="app-footer"><p><strong>ข้อควรทราบ:</strong> คำตอบช่วยให้เข้าใจเบื้องต้น ไม่ใช่คำยืนยันอย่างเป็นทางการ โปรดตรวจสอบเรื่องสำคัญกับหน่วยงานผู้ออกเอกสาร</p></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="assertive" aria-atomic="true"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "teamwork-preview",
+  "version": "1.0.0",
+  "description": "รู้ทันหนังสือราชการ (Thai Official Document Explainer & Action Guide) - Serial Multi-Role Engine on AiPASS Bridge",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "test": "node --test test/**/*.test.mjs",
+    "test:unit": "node --test test/unit/*.test.mjs",
+    "test:integration": "node --test test/integration/*.test.mjs",
+    "test:e2e": "node --test test/e2e/studio-workflow.test.mjs",
+    "test:ui-contract": "node --test test/e2e/ui-contract.test.mjs"
+  },
+  "keywords": [
+    "aipass",
+    "aipass-bridge",
+    "official-document-explainer",
+    "thai-government-docs",
+    "teamwork",
+    "serial-execution"
+  ],
+  "author": "Dev Oracle & Don",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
